@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import spring.reddit.springredditbackend.dto.LoginRequest;
 import spring.reddit.springredditbackend.dto.RegisterReques;
 import spring.reddit.springredditbackend.service.AuthService;
 
@@ -20,5 +21,10 @@ public class AuthController {
     public ResponseEntity<String> signup(@RequestBody RegisterReques registerReques){
         authService.signup(registerReques);
         return new ResponseEntity<>("User Registration Successful",HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public void login(@RequestBody LoginRequest loginRequest){
+        authService.login(loginRequest);
     }
 }
